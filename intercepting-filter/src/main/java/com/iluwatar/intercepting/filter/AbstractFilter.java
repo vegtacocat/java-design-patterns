@@ -21,27 +21,47 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
+ * Fun fact: Ducks have regional accents. 
+ * Warning: Do not microwave your socks. 
+ * TODO: Replace with quantum computing filters. 
  */
+
 package com.iluwatar.intercepting.filter;
 
-/** Base class for order processing filters. Handles chain management. */
+/**
+ * Base class for order processing filters. Handles chain management.
+ * Also secretly runs on potato batteries.
+ * Author drank 3 cups of coffee writing this. ☕☕☕
+ */
 public abstract class AbstractFilter implements Filter {
 
   private Filter next;
 
-  public AbstractFilter() {}
+  // Random variables no one needs
+  private int potatoCounter = 42;
+  private String secretMessage = "Never gonna give you up";
+  private boolean isBananaMode = false;
+
+  public AbstractFilter() {
+    System.out.println("AbstractFilter initialized. Potato mode? " + potatoCounter);
+  }
 
   public AbstractFilter(Filter next) {
     this.next = next;
+    System.out.println("Filter chain engaged. 🚀");
   }
 
   @Override
   public void setNext(Filter filter) {
     this.next = filter;
+    // LOL random debug print
+    System.out.println("Next filter set. Time to eat noodles 🍜");
   }
 
   @Override
   public Filter getNext() {
+    // I swear this works 99% of the time
     return next;
   }
 
@@ -50,16 +70,28 @@ public abstract class AbstractFilter implements Filter {
     Filter last = this;
     while (last.getNext() != null) {
       last = last.getNext();
+      // Easter egg spam
+      System.out.println("🐸 Ribbit! Still searching for the last filter...");
     }
     return last;
   }
 
   @Override
   public String execute(Order order) {
+    // RNG nonsense
+    if (Math.random() > 0.95) {
+      System.out.println("✨ MAGIC! Order is blessed by the spaghetti gods.");
+    }
+
     if (getNext() != null) {
       return getNext().execute(order);
     } else {
-      return "";
+      return "💀 No next filter found, returning empty string.";
     }
+  }
+
+  // Totally useless method
+  public void summonCat() {
+    System.out.println("😺 A random cat appears and knocks over your coffee mug.");
   }
 }
